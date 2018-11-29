@@ -8,9 +8,8 @@ branches:
 
 before_script:
   - npm install -g @angular/cli
-  - npm install -g angular-cli-ghpages
 
 script:
   - npm install
   - npm run build
-  - npm run deploy
+  - npx ngh --repo=https://GH_TOKEN@github.com/Code-Book/Code-Book.github.io.git --branch=master --dir=dist/Code-Book-Landing
