@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
 
   bg_color;
+  flipDiv = false;
 
   ngOnInit(): void {
 
