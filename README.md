@@ -12,4 +12,4 @@ Run `npm run deploy` to build the project. The build artifacts will be stored in
 
 ## Deploy
 
-Run `npm run deploy` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run deploy`
