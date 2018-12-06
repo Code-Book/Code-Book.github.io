@@ -1,6 +1,8 @@
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
-
+import { } from '@angular/http/';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +15,10 @@ export class AppComponent implements OnInit {
 
   bg_color;
   flipDiv = false;
+
+  releases: any;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
 
@@ -47,6 +53,27 @@ export class AppComponent implements OnInit {
     ];
 
     this.onChange(true);
+
+    this.releases = this.http.get('https://api.github.com/repos/Code-Book/code-book-desktop/releases/latest',
+      {
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).pipe(map((res: any) => {
+        return {
+          source: res.html_url,
+          version: res.tag_name,
+          linux: res.assets
+            .filter(assetData => assetData.name.endsWith('linux.deb'))
+            .map(assetData => assetData.browser_download_url)[0],
+          mac: res.assets
+            .filter(assetData => assetData.name.endsWith('mac.dmg'))
+            .map(assetData => assetData.browser_download_url)[0],
+          windows: res.assets
+            .filter(assetData => assetData.name.endsWith('win.exe'))
+            .map(assetData => assetData.browser_download_url)[0]
+        };
+      }));
   }
 
   onChange(event) {
@@ -83,4 +110,9 @@ export class AppComponent implements OnInit {
       `${basePath}/Help.png`
     ];
   }
+
+  openLink(link: string) {
+    window.open(link, '_blank');
+  }
+
 }

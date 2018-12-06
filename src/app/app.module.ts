@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { UiSwitchModule } from 'ngx-toggle-switch';
 import { FlipModule } from 'ngx-flip';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +17,8 @@ import { FlipModule } from 'ngx-flip';
     AppRoutingModule,
     NgxGalleryModule,
     UiSwitchModule,
-    FlipModule
+    FlipModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

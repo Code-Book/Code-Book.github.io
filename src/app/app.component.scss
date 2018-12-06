@@ -23,3 +23,63 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.download-button{
+    height: 65px;
+    width: 130px;
+    font-size: large;
+    border: 2px solid #616161;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 0;
+}
+
+.download-button:hover{
+    background-color: #616161;
+}
+
+.switch-theme{
+    margin-top: 20px;
+}
+
+.more-button{
+    height: 32px;
+    width: unset;
+    padding: 6px;
+    font-size: medium;
+    border: 1px solid #c4c4c4;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.link{
+    cursor: pointer;
+}
+
+#loader {
+    z-index: 1;
+    display: block;
+    left: 0;
+    right: 0;
+    width: 60px;
+    margin: auto;
+    height: 60px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #616161;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

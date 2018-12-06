@@ -4,16 +4,27 @@
     <h1>
       Welcome to CodeBook
     </h1>
+    <div class="download-options" *ngIf="(releases | async) as releaseData else loading">
+      <h2>
+        Download
+      </h2>
+      <h5>
+        Version : {{releaseData.version}}
+      </h5>
+      <div>
+        <button class="download-button" (click)="openLink(releaseData.windows)">Windows</button>
+        <button class="download-button" (click)="openLink(releaseData.mac)">Mac</button>
+        <button class="download-button" (click)="openLink(releaseData.linux)">Linux</button>
+      </div>
+      <button class=" download-button more-button" (click)="openLink(releaseData.source)">More Download Options</button>
+    </div>
 
-    <h3>
-      Coming Soon
-    </h3>
-
-    <ui-switch size="large" color="#616161" (change)="onChange($event)" checked></ui-switch>
-
+    <div class="switch-theme">
+      <ui-switch size="large" color="#616161" (change)="onChange($event)" checked></ui-switch>
+    </div>
   </div>
 
-  <ngx-gallery [ngStyle]="{'background': bg_color}" class="gallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+  <ngx-gallery class="gallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 
   <ngx-flip class="about-me-card" [flip]="flipDiv" (click)="flipDiv=!flipDiv">
 
@@ -22,13 +33,19 @@
       <p>Build using Node.JS, Electron, Angular, Plop.JS</p>
       <p>Bring your own templates or download samples</p>
       <p>Free for Personal and Commercial use</p>
+      <h5 class="link" (click)="openLink('https://github.com/Code-Book/code-book-desktop')">View Source Code</h5>
     </div>
 
     <div back>
       <h4>Developer</h4>
       <h2>Sanchit Gupta</h2>
-      <h5>gupta.sanchit90@gmail.com</h5>
+      <h6>gupta.sanchit90@gmail.com</h6>
+      <h5 class="link" (click)="openLink('https://sanchitgupta.netlify.com')">https://sanchitgupta.netlify.com</h5>
     </div>
 
   </ngx-flip>
 </div>
+
+<ng-template #loading>
+  <div id="loader"></div>
+</ng-template>
